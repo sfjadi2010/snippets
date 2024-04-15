@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {db} from "@/db";
 
 export default async function Snippets() {
@@ -5,21 +6,22 @@ export default async function Snippets() {
 
   const renderdSnippets = snippets.map((snippet) => {
     return (
-      <div key={snippet.id}>
-        <h3 className="text-xl">{snippet.title}</h3>
-        <pre>{snippet.code}</pre>
-        <br />
-      </div>
+      <Link key={snippet.id} 
+        href={`/snippets/${snippet.id}`}
+        className="flex justify-between items-center p-2 border rounded">
+        <div>{snippet.title}</div>
+        <div>View</div>
+      </Link>
+
     );
   });
   return (
     <div>
-      <h1>Snippets</h1>
-      <div>
-        <a className="text-blue-300 border rounded p-1" href="/snippets/new">Create a Snippet</a>
+      <div className="flex m-2 justify-between items-center">
+        <h1 className="text-xl font-bold">Snippets</h1>
+        <Link className="border p-2 border rounded" href="/snippets/new">New</Link>
       </div>
-      <br />
-      <div>{renderdSnippets}</div>
+      <div className="flex flex-col gap-2 m-2">{renderdSnippets}</div>
     </div>
     
   );
