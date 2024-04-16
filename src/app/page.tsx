@@ -1,6 +1,8 @@
 import Link from "next/link";
 import {db} from "@/db";
 
+// export const dynamic = 'force-dynamic';
+
 export default async function Snippets() {
   const snippets = await db.snippet.findMany();
 
@@ -25,4 +27,14 @@ export default async function Snippets() {
     </div>
     
   );
+}
+
+export async function generateStaticParams() {
+  const snippets = await db.snippet.findMany();
+
+  return snippets.map((snippet) => ({
+    params: {
+      id: snippet.id.toString(),
+    },
+  }));
 }

@@ -38,6 +38,8 @@ export default async function SnippetShowPage(props: SnippetShowPageProps)
             <pre className="p-3 border rounded bg-gray-200 border-gray-200">
                 <code>{snippet.code}</code>
             </pre>
+
+            <Link href={`/`}>Home</Link>
         </div>
     );
 }

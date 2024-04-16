@@ -1,5 +1,6 @@
 import SnippetEditForm from "@/components/snippet-edit-form";
 import { db } from "@/db";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface SnippetEditPageProps {
